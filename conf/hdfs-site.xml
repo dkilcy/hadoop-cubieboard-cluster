@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+
+        <name>dfs.name.dir</name>
+        <value>/data/hadoop/dfs/name</value>
+        <description>
+        Path on the local filesystem where the NameNode stores the namespace and transactions logs persistently.
+        If this is a comma-delimited list of directories then the name table is replicated in all of the directories, for redundancy.
+        </description>
+
+        <name>dfs.data.dir</name>
+        <value>/data/hadoop/dfs/data</value>
+        <description>
+        Comma separated list of paths on the local filesystem of a DataNode where it should store its blocks.
+        If this is a comma-delimited list of directories, then data will be stored in all named directories, typically on different devices. 
+        </description>
+
+	<name>dfs.replication</name>
+	<value>3</value>
+	<description>
+	Default block replication is 3.
+	</description>
+</configuration>
