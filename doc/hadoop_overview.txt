@@ -1,4 +1,3 @@
-
 What is Hadoop?
 - distributed processing of data across a cluster
 
@@ -67,5 +66,3 @@ Hadoop is good at things relational databases are bad at (good for single lookup
 - Batch Processing
 
 Applications are written at a high level, shielding the developer from the complexity of the infrastructure.
-
-
