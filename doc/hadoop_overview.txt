@@ -66,3 +66,12 @@ Hadoop is good at things relational databases are bad at (good for single lookup
 - Batch Processing
 
 Applications are written at a high level, shielding the developer from the complexity of the infrastructure.
+
+Job stages:
+- Input Reader
+- Map
+- Partition
+- Combiner
+- Reduce
+- Output Writer
+
