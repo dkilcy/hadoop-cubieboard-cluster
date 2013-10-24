@@ -1,15 +1,16 @@
 What is Hadoop?
-- distributed processing of data across a cluster
+- distributed processing of data across a cluster of nodes
 
 It has two components:
 - MapReduce: a programming model that breaks down problems into discrete units that can be processed in parallel.
-- HDFS: a distributed file system that replicates data across a cluster for reliability and availability.
+- HDFS: a distributed file system that replicates data across the cluster for reliability and availability 
+(a minimum of a 1:3 ratio. )
 
 All about failure:
-- Partial failure support: failure of a component should result in graceful degregation.
-- Data recoverability: If a node fails workload should be assumed to the surviving nodes.
+- Partial failure support: failure of a node results in graceful degregation.
+- Data recoverability: If a node fails workload is handled by the surviving nodes.
 - Component recoverability: If a node returns it should be able to rejoin the cluster.
-- Consistency: component failures should not affect the outcome of the job.
+- Consistency: node failures should not affect the outcome of the job.
 - Scalability: adding load should result in graceful decline of performance.
 
 3 phases to MapReduce: Map, Shuffle-sort, Reduce
@@ -21,35 +22,35 @@ All about failure:
   
 "Hello World" of Hadoop (WordCount)
 ===================================
-- Map input: "the cat sat on the hat"
-- Map output:
+- Map takes input: "the cat sat on the hat" and distribues it across the cluster
+- Map phase outputs:
 the: [1]
 cat: [1]
 sat: [1]
 on:  [1] 
 the: [1]
 hat: [1]
-
-- Output of shuffle-sort (becomes input to the Reducer):
+- Output of map data goes to input of shuffle-sort 
+- Shuffle-sort phase outputs (to reducer)
 cat: [1]
 hat: [1]
 on:  [1]
 sat: [1]
 the: [1,1]
-
-- Reducer outputs:
+- Reducer takes output of shuffle-and-sort and returns final result:
+the: 2
 cat: 1
 hat: 1
 on:  1
 sat: 1
-the: 2
 
 Each map tasks works on a small portion of the data (typically a single block). 
 Concept of "Bring the CPU to the data, not the other way around".  
-A Shared-nothing architecture (nodes don't communicate).
+A Shared-nothing architecture (nodes don't communicate).  Everything processes in parallel*
 
-A master program called the Job Tracker allocates work to nodes (slaves running thier own Task Tracker)
-that work on blocks stored locally on that node.
+How it works:
+A master program called the Job Tracker accepts a job and allocates work to nodes 
+(slaves running thier own Task Tracker) that work on blocks stored locally on that node.
 Many Nodes working together on thier own part of the data set.
 
 - NameNode: manages the HDFS
@@ -61,12 +62,17 @@ Many Nodes working together on thier own part of the data set.
 What if there is a problem with the slave nodes? Hadoop has a feature called "speculative execution" that can 
 replicate to other slave nodes.  Whatever node finishes first notifies the Task Tracker, and kills the other task.
 
-Hadoop is good at things relational databases are bad at (good for single lookup, bad for table scan)
-- Volume, Velocity, Variety of data.  
+Hadoop is good at things relational databases are bad a
+RDBMS good for single lookup, bad for table scan
+Hadoop good for table scan, but not a single query mechanism
+
+- Deals with large amounts of Volume, Velocity, Variety of data.  
 - Batch Processing
 
 Applications are written at a high level, shielding the developer from the complexity of the infrastructure.
 
+Weeds:
+------
 Job stages:
 - Input Reader
 - Map
