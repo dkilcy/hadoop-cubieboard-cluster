@@ -29,11 +29,11 @@ done
 shift $(($OPTIND - 1))
 
 if [ "$NO_RMR" ] ; then
-	echo \
+	##echo \
 	hadoop fs -rmr $4 -Dfs.defaultFS=$NAMENODE
 fi
 
-echo \
+##echo \
 hadoop jar $1 $2 $3 $4 -Dfs.defaultFS=$NAMENODE -Dmapred.job.tracker=$JOB_TRACKER
 
 ### 
