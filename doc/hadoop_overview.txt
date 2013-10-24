@@ -50,10 +50,7 @@ sat: 1
 
 -All mapper worked on a small portion of the data (typically a single block).
 -Shuffle-sort organized the data 
--One or more (!) reducers produced the final result (get to that in a minute)
-If this was a limited query application maybe you were looking for the 80s band "The The" or the
-movie "The Thing"?  Or maybe you were looking to toss the clutter and more interested in cats.
-We could have thrown out "sat on hat" during the map or reduce phase.
+-One or more reducers produced the final result (get to that in a minute)
 
 Concept of "Bring the CPU to the data, not the other way around".  
 A Shared-nothing architecture (nodes don't communicate).  Everything processed in parallel.
