@@ -50,7 +50,7 @@ sat: 1
 
 -All mapper worked on a small portion of the data (typically a single block).
 -Shuffle-sort organized the data 
--One or more reducers produced the final result (get to that in a minute)
+-One or more reducers produced the final result
 
 Concept of "Bring the CPU to the data, not the other way around".  
 A Shared-nothing architecture (nodes don't communicate).  Everything processed in parallel.
