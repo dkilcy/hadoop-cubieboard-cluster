@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export LANG=C
+export PS1="\e[1;31m[\u@\h \W]$ \e[m"
+

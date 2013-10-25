@@ -4,9 +4,29 @@
 <!-- Put site-specific property overrides in this file. -->
 
 <configuration>
-
+<property>
 	<name>mapred.job.tracker</name>
 	<value>cubietruck-1:54311</value>
 	<description>Host or IP and port of JobTracker</description>
-
+</property>
+<property>
+	<name>mapred.local.dir</name>
+	<value>/data/mapred/local</value>
+</property>
+<property>
+	<name>mapred.system.dir</name>
+	<value>/tmp/hadoop/mapred/system</value>
+</property>
+<property>
+	<name>mapred.tasktracker.map.tasks.maximum</name>
+	<value>2</value>
+</property>
+<property>
+	<name>mapred.tasktracker.reduce.tasks.maximum</name>
+	<value>2</value>
+</property>
+<property>
+	<mapred.child.java.opts</name>
+	<value>-Xmx256m</value>
+</property>
 </configuration>

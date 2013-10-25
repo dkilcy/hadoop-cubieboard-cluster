@@ -4,9 +4,9 @@
 <!-- Put site-specific property overrides in this file. -->
 
 <configuration>
-
+<property>
 	<name>fs.default.name</name>
 	<value>hdfs://cubietruck-1:54310/</value>
 	</description>URI of NameNode</description>
-
+</property>
 </configuration>

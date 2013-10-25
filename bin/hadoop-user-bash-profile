@@ -1,0 +1,12 @@
+#!/bin/bash
+
+export LANG=C
+export PS1="\e[1;33m[\u@\h \W]$ \e[m"
+
+export JAVA_HOME=/opt/java
+
+export HADOOP_PREFIX=/opt/hadoop
+export HADOOP_HOME=/opt/hadoop
+export HADOOP_INSTALL=/opt/hadoop
+
+export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_PREFIX/bin
