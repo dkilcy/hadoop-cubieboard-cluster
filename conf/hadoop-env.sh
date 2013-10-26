@@ -4,7 +4,7 @@
 ###############################################################################
 
 # The java implementation to use.  Required.
-export JAVA_HOME=/opt/java
+export JAVA_HOME=/usr/lib/jvm/java-7-oracle
 
 # Extra Java CLASSPATH elements.  Optional.
 # export HADOOP_CLASSPATH=

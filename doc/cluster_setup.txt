@@ -40,7 +40,7 @@ Installation Setup
 - Copy over Java, Hadoop and the Hadoop configs to the master to /root/sw
   - Copy from the master to all the slaves to /root/sw
 
-- Install Java in /opt/java on the master and slaves
+- Install Java in /usr/lib/jvm on the master and slaves
 
 - Install Hadoop in /opt/hadoop on the master and slaves
   - Install the Hadoop configs
@@ -78,8 +78,6 @@ drwx------ 2 root   root   2048 Oct 20 22:24 lost+found
 total 8
 lrwxrwxrwx  1 root   root     12 Oct 21 06:01 hadoop -> hadoop-1.2.1
 drwxr-xr-x 15 hadoop hadoop 4096 Jul 22 22:26 hadoop-1.2.1
-lrwxrwxrwx  1 root   root     16 Oct 22 03:02 java -> /opt/jdk1.7.0_45
-drwxr-xr-x  8 root   root   4096 Oct  8 15:34 jdk1.7.0_45
 [root@cubieboard2-1 ~]$ ls -la /var/opt/hadoop/
 total 12
 drwxr-xr-x 3 hadoop hadoop 4096 Oct 25 15:02 .
@@ -99,7 +97,7 @@ drwxr-xr-x 10 root   root   4096 Oct 25 15:02 ..
 export LANG=C
 export PS1="\e[1;36m[\u@\h \W]$ \e[m"
 
-export JAVA_HOME=/opt/java
+export JAVA_HOME=/usr/lib/jvm/java-7-oracle
 
 export PATH=$PATH:$JAVA_HOME/bin
 
@@ -116,7 +114,7 @@ export PATH=$PATH:$JAVA_HOME/bin
 export LANG=C
 export PS1="\e[1;33m[\u@\h \W]$ \e[m"
 
-export JAVA_HOME=/opt/java
+export JAVA_HOME=/usr/lib/jvm/java-7-oracle
 
 export HADOOP_PREFIX=/opt/hadoop
 export HADOOP_HOME=/opt/hadoop

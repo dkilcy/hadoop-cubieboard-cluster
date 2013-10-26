@@ -3,7 +3,7 @@
 export LANG=C
 export PS1="\e[1;33m[\u@\h \W]$ \e[m"
 
-export JAVA_HOME=/opt/java
+export JAVA_HOME=/usr/lib/jvm/java-7-oracle
 
 export HADOOP_PREFIX=/opt/hadoop
 export HADOOP_HOME=/opt/hadoop
