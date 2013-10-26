@@ -1,4 +1,3 @@
-
 ===============================================================================
 Installation Setup
 ===============================================================================
@@ -36,6 +35,20 @@ Installation Setup
   # ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa
   # cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys
   # ssh localhost
+  
+- Disable IPv6 on all systems:
+
+  Edit /etc/sysctl.conf and add: 
+
+#disable ipv6
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
+
+  Reboot
+  Verify: cat /proc/sys/net/ipv6/conf/all/disable_ipv6
+  “1″ means IPv6 has been disabled
+  
 
 - Copy over Java, Hadoop and the Hadoop configs to the master to /root/sw
   - Copy from the master to all the slaves to /root/sw
