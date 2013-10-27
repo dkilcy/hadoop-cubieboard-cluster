@@ -10,7 +10,7 @@ export JAVA_HOME=/usr/lib/jvm/java-7-oracle
 # export HADOOP_CLASSPATH=
 
 # The maximum amount of heap to use, in MB. Default is 1000.
-export HADOOP_HEAPSIZE=256
+export HADOOP_HEAPSIZE=1000
 
 # Extra Java runtime options.  Empty by default.
 export HADOOP_OPTS=-server

@@ -20,7 +20,7 @@
 </property>
 <property>
 	<name>fs.checkpoint.dir</name>
-	<value>/data/hdfs/namesecondry</value>
+	<value>/data/hdfs/namesecondary</value>
 	<final>true</true>
 </property>
 <property>

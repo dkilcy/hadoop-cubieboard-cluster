@@ -6,7 +6,7 @@
 <configuration>
 <property>
 	<name>mapred.job.tracker</name>
-	<value>cubietruck-1:54311</value>
+	<value>mintbox2-1:54311</value>
 	<description>Host or IP and port of JobTracker</description>
 </property>
 <property>
