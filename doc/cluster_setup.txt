@@ -50,14 +50,21 @@ net.ipv6.conf.lo.disable_ipv6 = 1
   Verify: cat /proc/sys/net/ipv6/conf/all/disable_ipv6
   “1″ means IPv6 has been disabled
   
-
-- Copy over Java, Hadoop and the Hadoop configs to the master to /root/sw
-  - Copy from the master to all the slaves to /root/sw
+- Copy over Java, Hadoop and the Hadoop configs to the master
+  - Copy from the master to all the slaves
 
 - Install Java in /usr/lib/jvm on the master and slaves
 
 - Install Hadoop in /opt/hadoop on the master and slaves
-  - Install the Hadoop configs
+  - Checkout project from github
+  - Copy conf directory into /opt/hadoop/conf on master
+  - Install the Hadoop configs as hadoop user on master (mintbox2-1)
+
+# scp * cubieboard2-1:/opt/hadoop/conf/
+# scp * cubieboard2-2:/opt/hadoop/conf/
+# scp * cubieboard2-3:/opt/hadoop/conf/
+# scp * cubieboard2-4:/opt/hadoop/conf/
+
 
 - Install syslog-ng
 
