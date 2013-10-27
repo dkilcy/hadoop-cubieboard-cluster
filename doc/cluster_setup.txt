@@ -32,8 +32,14 @@ Installation Setup
   - After running script copy over applicable user bash-profiles
   - su to root and set the hadoop user password
 
+  On all systems:
+  
   - mkdir -p /data/hdfs hdfs
   - chown -R hadoop.hadoop /data/hdfs
+  
+  mkdir -p /data/hadoop/mapred/system
+  mkdir -p /data/hadoop/mapred/local 
+
   
 - Setup SSH for hadoop user. Make sure hadoop user can ssh from master 
   to all slaves
