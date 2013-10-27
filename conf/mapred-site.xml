@@ -6,7 +6,7 @@
 <configuration>
 <property>
 	<name>mapred.job.tracker</name>
-	<value>mintbox2-1:54311</value>
+	<value>mintbox2-1:9001</value>
 	<description>Host or IP and port of JobTracker</description>
 </property>
 <property>
@@ -19,11 +19,11 @@
 </property>
 <property>
 	<name>mapred.tasktracker.map.tasks.maximum</name>
-	<value>2</value>
+	<value>1</value>
 </property>
 <property>
 	<name>mapred.tasktracker.reduce.tasks.maximum</name>
-	<value>2</value>
+	<value>1</value>
 </property>
 <property>
 	<name>mapred.child.java.opts</name>
