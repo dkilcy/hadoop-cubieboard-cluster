@@ -28,6 +28,7 @@ Installation Setup
 - Run the master-setup.sh or slave-setup.sh
   - Performs directory and permission setup
   - After running script copy over applicable user bash-profiles
+  - su to root and set the hadoop user password
 
 - Setup SSH for hadoop user. Make sure hadoop user can ssh from master 
   to all slaves
