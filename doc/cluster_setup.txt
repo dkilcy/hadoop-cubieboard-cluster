@@ -34,11 +34,12 @@ Installation Setup
 
   On all systems:
   
-  - mkdir -p /data/hdfs hdfs
+  - mkdir -p /data/hdfs
+  - mkdir -p /data/hadoop/mapred/system
+  - mkdir -p /data/hadoop/mapred/local 
   - chown -R hadoop.hadoop /data/hdfs
-  
-  mkdir -p /data/hadoop/mapred/system
-  mkdir -p /data/hadoop/mapred/local 
+  - chown -R hadoop.hadoop /data/hadoop
+
 
   
 - Setup SSH for hadoop user. Make sure hadoop user can ssh from master 
