@@ -11,11 +11,11 @@
 </property>
 <property>
 	<name>mapred.local.dir</name>
-	<value>/data/mapred/local</value>
+	<value>/data/hadoop/tmp/mapred/local</value>
 </property>
 <property>
 	<name>mapred.system.dir</name>
-	<value>/tmp/hadoop/mapred/system</value>
+	<value>/data/hadoop/tmp/mapred/system</value>
 </property>
 <property>
 	<name>mapred.tasktracker.map.tasks.maximum</name>
