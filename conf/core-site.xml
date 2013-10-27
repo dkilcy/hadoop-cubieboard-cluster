@@ -7,6 +7,6 @@
 <property>
 	<name>fs.default.name</name>
 	<value>hdfs://mintbox2-1:54310/</value>
-	</description>URI of NameNode</description>
+	<description>URI of NameNode</description>
 </property>
 </configuration>
