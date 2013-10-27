@@ -66,6 +66,7 @@ net.ipv6.conf.lo.disable_ipv6 = 1
 # scp * cubieboard2-4:/opt/hadoop/conf/
 
 
+
 - Install syslog-ng
 
 ===============================================================================
