@@ -19,6 +19,7 @@ Installation Setup
   # mount /dev/mmcblk0p1 /data
   # df -TH
   - Add "/dev/mmcblk0p1 /data ext4 defaults,noatime 0 2" to /etc/fstab
+  # chmod 777 /data
 
 - Expand cubieboard root dir from 2GB to 4GB
   # ./nand-part /dev/nand "env 32768" "boot 65536" "rootfs 7536640" "swap 0"
@@ -26,10 +27,14 @@ Installation Setup
   # resize2fs -f /dev/nandd
 
 - Run the master-setup.sh or slave-setup.sh
+  - Creates the hadoop user
   - Performs directory and permission setup
   - After running script copy over applicable user bash-profiles
   - su to root and set the hadoop user password
 
+  - mkdir -p /data/hdfs hdfs
+  - chown -R hadoop.hadoop /data/hdfs
+  
 - Setup SSH for hadoop user. Make sure hadoop user can ssh from master 
   to all slaves
 
@@ -94,7 +99,7 @@ none           tmpfs  100M     0  100M   0% /run/user
 /dev/mmcblk0p5 ext4    55G   17M   52G   1% /data
 [root@cubieboard2-1 ~]$ ls -l /data
 total 4
-drwxr-xr-x 2 hadoop hadoop 2048 Oct 25 15:05 hadoop
+drwxr-xr-x 2 hadoop hadoop 2048 Oct 25 15:05 hdfs
 drwx------ 2 root   root   2048 Oct 20 22:24 lost+found
 [root@cubieboard2-1 ~]$ ls -l /opt
 total 8
