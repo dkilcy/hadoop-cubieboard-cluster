@@ -19,6 +19,7 @@ Installation Setup
   # mount /dev/mmcblk0p1 /data
   # df -TH
   - Add "/dev/mmcblk0p1 /data ext4 defaults,noatime 0 2" to /etc/fstab
+  # chmod 777 /data
 
 - Expand cubieboard root dir from 2GB to 4GB
   # ./nand-part /dev/nand "env 32768" "boot 65536" "rootfs 7536640" "swap 0"
@@ -26,10 +27,21 @@ Installation Setup
   # resize2fs -f /dev/nandd
 
 - Run the master-setup.sh or slave-setup.sh
+  - Creates the hadoop user
   - Performs directory and permission setup
   - After running script copy over applicable user bash-profiles
   - su to root and set the hadoop user password
 
+  On all systems:
+  
+  - mkdir -p /data/hdfs
+  - mkdir -p /data/hadoop/mapred/system
+  - mkdir -p /data/hadoop/mapred/local 
+  - chown -R hadoop.hadoop /data/hdfs
+  - chown -R hadoop.hadoop /data/hadoop
+
+
+  
 - Setup SSH for hadoop user. Make sure hadoop user can ssh from master 
   to all slaves
 
@@ -53,7 +65,7 @@ net.ipv6.conf.lo.disable_ipv6 = 1
 - Copy over Java, Hadoop and the Hadoop configs to the master
   - Copy from the master to all the slaves
 
-- Install Java in /usr/lib/jvm on the master and slaves
+- Install Java in /usr/lib/jvm on the master and slaves`
 
 - Install Hadoop in /opt/hadoop on the master and slaves
   - Checkout project from github
@@ -64,6 +76,62 @@ net.ipv6.conf.lo.disable_ipv6 = 1
 # scp * cubieboard2-2:/opt/hadoop/conf/
 # scp * cubieboard2-3:/opt/hadoop/conf/
 # scp * cubieboard2-4:/opt/hadoop/conf/
+
+[hadoop@mintbox2-1 ~]$ hadoop namenode -format
+Warning: $HADOOP_HOME is deprecated.
+
+13/10/26 22:39:32 INFO namenode.NameNode: STARTUP_MSG: 
+/************************************************************
+STARTUP_MSG: Starting NameNode
+STARTUP_MSG:   host = mintbox2-1/127.0.1.1
+STARTUP_MSG:   args = [-format]
+STARTUP_MSG:   version = 1.2.1
+STARTUP_MSG:   build = https://svn.apache.org/repos/asf/hadoop/common/branches/branch-1.2 -r 1503152; compiled by 'mattf' on Mon Jul 22 15:23:09 PDT 2013
+STARTUP_MSG:   java = 1.7.0_45
+************************************************************/
+13/10/26 22:39:32 INFO util.GSet: Computing capacity for map BlocksMap
+13/10/26 22:39:32 INFO util.GSet: VM type       = 64-bit
+13/10/26 22:39:32 INFO util.GSet: 2.0% max memory = 932184064
+13/10/26 22:39:32 INFO util.GSet: capacity      = 2^21 = 2097152 entries
+13/10/26 22:39:32 INFO util.GSet: recommended=2097152, actual=2097152
+13/10/26 22:39:32 INFO namenode.FSNamesystem: fsOwner=hadoop
+13/10/26 22:39:32 INFO namenode.FSNamesystem: supergroup=supergroup
+13/10/26 22:39:32 INFO namenode.FSNamesystem: isPermissionEnabled=true
+13/10/26 22:39:32 INFO namenode.FSNamesystem: dfs.block.invalidate.limit=100
+13/10/26 22:39:32 INFO namenode.FSNamesystem: isAccessTokenEnabled=false accessKeyUpdateInterval=0 min(s), accessTokenLifetime=0 min(s)
+13/10/26 22:39:32 INFO namenode.FSEditLog: dfs.namenode.edits.toleration.length = 0
+13/10/26 22:39:32 INFO namenode.NameNode: Caching file names occuring more than 10 times 
+13/10/26 22:39:33 INFO common.Storage: Image file /data/hdfs/name/current/fsimage of size 112 bytes saved in 0 seconds.
+13/10/26 22:39:33 INFO namenode.FSEditLog: closing edit log: position=4, editlog=/data/hdfs/name/current/edits
+13/10/26 22:39:33 INFO namenode.FSEditLog: close success: truncate to 4, editlog=/data/hdfs/name/current/edits
+13/10/26 22:39:33 INFO common.Storage: Storage directory /data/hdfs/name has been successfully formatted.
+13/10/26 22:39:33 INFO namenode.NameNode: SHUTDOWN_MSG: 
+/************************************************************
+SHUTDOWN_MSG: Shutting down NameNode at mintbox2-1/127.0.1.1
+************************************************************/
+
+[hadoop@mintbox2-1 ~]$ start-all.sh 
+Warning: $HADOOP_HOME is deprecated.
+
+starting namenode, logging to /var/log/hadoop/hadoop-hadoop-namenode-mintbox2-1.out
+log4j:WARN No such property [maxBackupIndex] in org.apache.log4j.DailyRollingFileAppender.
+cubieboard2-3: starting datanode, logging to /var/log/hadoop/hadoop-hadoop-datanode-cubieboard2-3.out
+cubieboard2-1: starting datanode, logging to /var/log/hadoop/hadoop-hadoop-datanode-cubieboard2-1.out
+cubieboard2-4: starting datanode, logging to /var/log/hadoop/hadoop-hadoop-datanode-cubieboard2-4.out
+cubieboard2-2: starting datanode, logging to /var/log/hadoop/hadoop-hadoop-datanode-cubieboard2-2.out
+The authenticity of host 'mintbox2-1 (127.0.1.1)' can't be established.
+ECDSA key fingerprint is 7e:11:2b:ca:67:8a:7e:63:14:68:15:fb:9d:80:e7:05.
+Are you sure you want to continue connecting (yes/no)? yes
+mintbox2-1: Warning: Permanently added 'mintbox2-1' (ECDSA) to the list of known hosts.
+mintbox2-1: starting secondarynamenode, logging to /var/log/hadoop/hadoop-hadoop-secondarynamenode-mintbox2-1.out
+mintbox2-1: log4j:WARN No such property [maxBackupIndex] in org.apache.log4j.DailyRollingFileAppender.
+starting jobtracker, logging to /var/log/hadoop/hadoop-hadoop-jobtracker-mintbox2-1.out
+log4j:WARN No such property [maxBackupIndex] in org.apache.log4j.DailyRollingFileAppender.
+cubieboard2-3: starting tasktracker, logging to /var/log/hadoop/hadoop-hadoop-tasktracker-cubieboard2-3.out
+cubieboard2-1: starting tasktracker, logging to /var/log/hadoop/hadoop-hadoop-tasktracker-cubieboard2-1.out
+cubieboard2-4: starting tasktracker, logging to /var/log/hadoop/hadoop-hadoop-tasktracker-cubieboard2-4.out
+cubieboard2-2: starting tasktracker, logging to /var/log/hadoop/hadoop-hadoop-tasktracker-cubieboard2-2.out
+[hadoop@mintbox2-1 ~]$ 
 
 
 
@@ -94,7 +162,7 @@ none           tmpfs  100M     0  100M   0% /run/user
 /dev/mmcblk0p5 ext4    55G   17M   52G   1% /data
 [root@cubieboard2-1 ~]$ ls -l /data
 total 4
-drwxr-xr-x 2 hadoop hadoop 2048 Oct 25 15:05 hadoop
+drwxr-xr-x 2 hadoop hadoop 2048 Oct 25 15:05 hdfs
 drwx------ 2 root   root   2048 Oct 20 22:24 lost+found
 [root@cubieboard2-1 ~]$ ls -l /opt
 total 8

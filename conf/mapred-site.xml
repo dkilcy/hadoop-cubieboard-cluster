@@ -26,7 +26,7 @@
 	<value>2</value>
 </property>
 <property>
-	<mapred.child.java.opts</name>
+	<name>mapred.child.java.opts</name>
 	<value>-Xmx256m</value>
 </property>
 </configuration>
