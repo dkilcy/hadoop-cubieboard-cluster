@@ -21,7 +21,7 @@
 <property>
 	<name>fs.checkpoint.dir</name>
 	<value>/data/hdfs/namesecondary</value>
-	<final>true</true>
+	<final>true</final>
 </property>
 <property>
 	<name>dfs.replication</name>
